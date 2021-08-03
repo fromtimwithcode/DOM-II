@@ -37,14 +37,23 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Smaller image content with q
+// Smaller images content with q
 function q(event) {
     if (event.key === 'q') {
-        resizeImgContent.style = 'width: 25%';
+        Array.from(document.querySelectorAll('img')).forEach(item => item.style = 'width: 25%');
     }
 }
 
 document.addEventListener('keypress', q);
+
+// return images with w
+function w(event) {
+    if (event.key === 'w') {
+        Array.from(document.querySelectorAll('img')).forEach(item => item.style = 'width: 100%');
+    }
+}
+
+document.addEventListener('keypress', w);
 
 // Console.log copy/cut/paste
 document.addEventListener('copy', (event) => {
