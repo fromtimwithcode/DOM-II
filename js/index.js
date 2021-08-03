@@ -9,3 +9,8 @@ logoHeading.addEventListener('mouseover', (event) => {
 logoHeading.addEventListener('mouseout', (event) => {
     event.target.style = 'color: black';
 });
+
+// Hide website when Escape key is pressed
+document.addEventListener('keydown', (event) => {
+    event.target.style = 'display: none';
+});
