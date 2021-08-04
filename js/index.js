@@ -1,20 +1,19 @@
 const logoHeading = document.querySelector('.logo-heading');
 const navLinks = document.querySelector('nav');
 const headerText = document.querySelector('.intro h2')
-const resizeImgContent = document.querySelector('.img-content');
+const button = document.querySelector('.btn');
+
+// Prevent default on nav
+navLinks.addEventListener('click', (event) => {
+    event.preventDefault();
+});
 
 // Change site title to red on mouseover, return to black on mouseout
 logoHeading.addEventListener('mouseover', (event) => {
     event.target.style = 'color: red';
 });
-logoHeading.addEventListener('mouseover', (event) => {
-    event.stopPropagation();
-});
 logoHeading.addEventListener('mouseout', (event) => {
     event.target.style = 'color: black';
-});
-logoHeading.addEventListener('mouseout', (event) => {
-    event.stopPropagation();
 });
 
 // Nav links background on hover
@@ -28,6 +27,9 @@ navLinks.addEventListener('mouseout', (event) => {
 // Change intro h2 text when doubleclicked
 headerText.addEventListener('dblclick', (event) => {
     event.target.innerText = 'This bus is fuuuuun!';
+});
+headerText.addEventListener('dblclick', (event) => {
+    event.stopPropagation();
 });
 
 // Hide website when Escape key is pressed
@@ -46,7 +48,7 @@ function q(event) {
 
 document.addEventListener('keypress', q);
 
-// return images with w
+// Return images to normal with w
 function w(event) {
     if (event.key === 'w') {
         Array.from(document.querySelectorAll('img')).forEach(item => item.style = 'width: 100%');
@@ -65,3 +67,9 @@ document.addEventListener('cut', (event) => {
 document.addEventListener('paste', (event) => {
     console.log('User initiated paste');
 });
+
+Array.from(document.querySelectorAll('*')).forEach(item => item.addEventListener('click', (event) => {
+    console.log('🎯: ', event.target);
+    console.log('🧭: ', event.currentTarget);
+    console.log('\n');
+}));
