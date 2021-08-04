@@ -1,12 +1,17 @@
 const logoHeading = document.querySelector('.logo-heading');
 const navLinks = document.querySelector('nav');
 const headerText = document.querySelector('.intro h2')
-const button = document.querySelector('.btn');
+const buttons = document.querySelector('.btn');
 
 // Prevent default on nav
 navLinks.addEventListener('click', (event) => {
     event.preventDefault();
 });
+
+// Load event
+window.addEventListener('load', (event) => {
+    console.log('Page loaded.');
+})
 
 // Change site title to red on mouseover, return to black on mouseout
 logoHeading.addEventListener('mouseover', (event) => {
@@ -45,7 +50,6 @@ function q(event) {
         Array.from(document.querySelectorAll('img')).forEach(item => item.style = 'width: 25%');
     }
 }
-
 document.addEventListener('keypress', q);
 
 // Return images to normal with w
@@ -54,7 +58,6 @@ function w(event) {
         Array.from(document.querySelectorAll('img')).forEach(item => item.style = 'width: 100%');
     }
 }
-
 document.addEventListener('keypress', w);
 
 // Console.log copy/cut/paste
@@ -68,8 +71,8 @@ document.addEventListener('paste', (event) => {
     console.log('User initiated paste');
 });
 
-Array.from(document.querySelectorAll('*')).forEach(item => item.addEventListener('click', (event) => {
-    console.log('🎯: ', event.target);
-    console.log('🧭: ', event.currentTarget);
-    console.log('\n');
-}));
+// Click button to change button text
+function button(event) {
+    Array.from(document.querySelectorAll('.btn')).forEach(item => item.innerText = 'Button text changed!');
+}
+buttons.addEventListener('click', button);
